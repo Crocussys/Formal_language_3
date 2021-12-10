@@ -75,7 +75,7 @@ void Grammar::addPrecepts(string a, string input){
     Precept pr2;
     string* bss;
     bool flag = false;
-    if(bs[1].find(pre_separator) != -1){
+    if(bs[1].find(pre_separator) != string::npos){
         bss = DSP(bs[1], pre_separator);
         pr2.set(a, bss[0]);
         flag = true;
@@ -111,7 +111,7 @@ void Grammar::set(){
     cin >> cash;
     while(cash != pre_determinant){
         string* line = DSP(cash, pre_determinant);
-        if(line[1].find(pre_separator) != -1){
+        if(line[1].find(pre_separator) != string::npos){
             addPrecepts(line[0], line[1]);
         }else{
             Precept pr(line[0], line[1]);
@@ -356,6 +356,17 @@ void Grammar::Eliminate_epsilon_precepts(){
     }
     precepts = new_precepts;
 }
+void Grammar::sorting_precepts(){
+    vector<Precept> new_precepts = {};
+     for(unsigned int i = 0; i < nonterm_symbols.size(); i++){
+         for(unsigned int j = 0; j < precepts.size(); j++){
+             Precept pr = precepts[j];
+             if(pr.getA()[0] == nonterm_symbols[i])
+                 new_precepts.push_back(pr);
+         }
+     }
+     precepts = new_precepts;
+}
 void Grammar::Eliminating_chain_precepts(){
     vector<vector<char>> N = {};
     vector<Precept> new_precepts = {};
@@ -398,4 +409,5 @@ void Grammar::Eliminating_chain_precepts(){
         }
     }
     precepts = ans_precepts;
+    sorting_precepts();
 }

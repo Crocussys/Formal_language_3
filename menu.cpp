@@ -66,10 +66,10 @@ int Menu::start(){
                 cash.Eliminating_chain_precepts();
                 break;
             case 6:
-
+                cout << "Ещё не готово";
                 break;
             case 7:
-
+                cout << "Ещё не готово";
                 break;
             case 8:
                 cout << endl << "До свидания" << endl;
@@ -79,7 +79,7 @@ int Menu::start(){
                 break;
             }
             cout << endl;
-            if(chc >= 2 && chc <= 7){
+            if(chc >= 2 && chc <= 5){
                 cout << "Новая грамматика:" << endl;
                 cout << cash.print() << endl << endl;
                 cout << "Хотите ли применить изменения?" << endl;

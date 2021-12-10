@@ -25,6 +25,7 @@ private:
     vector<string> new_B(vector<char> N, string b);
     char new_nonterminal();
     void addPrecepts(string a, string input);
+    void sorting_precepts();
 public:
     Grammar();
     void set();
